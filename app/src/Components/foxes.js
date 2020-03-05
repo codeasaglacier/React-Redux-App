@@ -1,6 +1,10 @@
 import React from 'react'
-//14) import connect to connect to store
+//14) import connect to connect to store. Go \/
 import { connect } from 'react-redux'
+//28b)import Loader. Go \/
+import Loader from 'react-loader-spinner'
+//29)import getFox. Go \/
+import { getFox } from '../Actions'
 
 //11) create your component and pass in props. add your content and export. Go to App
 const Fox = props => {
@@ -8,13 +12,24 @@ const Fox = props => {
     <div>
       <h1>Fox Box</h1>
       {/*17)Give you component a button to do a thing. Add a conditional statement in case it doesn't do the thing. Go to foxActions */}
-      { !props.image && <p>Foxes try again!</p> }
-      <button>Get A Fox!</button>
+      {/*32) add a conditional to remove conditional statement ( !props.isFetching ). Go to foxActions */}
+      { !props.image && !props.isFetching && <p>Foxes push the Button!</p> }
+      {/*28)write a conditional for loading spinner. Import spinner as dependency. Go ^ */}
+      { props.isFetching && ( <Loader
+         type="Puff"
+         color="#00BFFF"
+         height={100}
+         width={100}
+      /> ) }
+      {/*41) */}
+      { props.image && <img src = { props.image } alt = 'Where did the fox go?'/> }
+      {/*31)write your onClick. Go ^ */}
+      <button onClick = { props.getFox }>Get A Fox!</button>
     </div>
   )
 }
 
-//15)create your mapStateToProps. Refer to your reducer for your different states, pass them in and assign each to state.theStateName
+//15)create your mapStateToProps. Refer to your reducer for your different states, pass them in and assign each to state.theStateName. Go \/
 const mapStateToProps = state => {
   return {
     image: state.image,
@@ -24,4 +39,5 @@ const mapStateToProps = state => {
 }
 
 //16)export connect, call mSTP and an empty object for first argument, with the component as second argument. Go ^
-export default connect( mapStateToProps, {} )( Fox )
+//30) add getFox to mSTP. Go ^
+export default connect( mapStateToProps, { getFox } )( Fox )

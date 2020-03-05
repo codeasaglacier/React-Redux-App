@@ -8,6 +8,8 @@ import foxReducer from './Reducers'
 import logger from 'redux-logger'
 import './index.css';
 import App from './App';
+//21) import Thunk
+import thunk from 'redux-thunk'
 
 //2)create composeEnhancers
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
@@ -21,6 +23,8 @@ const store = createStore(
     applyMiddleware( 
       //if you have to import multiple middlewares, add as parameters to applyMiddleware
       //if using a logger, the logger must bethe last parameter to applyMiddleware
+      //22)pass thunk to applyMiddleware. Go back to foxActions
+      thunk,
       logger 
     ) 
   )
