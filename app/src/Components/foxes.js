@@ -5,26 +5,38 @@ import { connect } from 'react-redux'
 import Loader from 'react-loader-spinner'
 //29)import getFox. Go \/
 import { getFox } from '../Actions'
+//43)install and import styled-components
+import styled from 'styled-components'
+import '../App.css'
+
+
+const FoxImage = styled.img`
+border-radius: 5rem;
+`
 
 //11) create your component and pass in props. add your content and export. Go to App
 const Fox = props => {
+  console.log( 'Props: ', props)
   return(
-    <div>
+    <div className = 'foxBox'>
       <h1>Fox Box</h1>
       {/*17)Give you component a button to do a thing. Add a conditional statement in case it doesn't do the thing. Go to foxActions */}
       {/*32) add a conditional to remove conditional statement ( !props.isFetching ). Go to foxActions */}
-      { !props.image && !props.isFetching && <p>Foxes push the Button!</p> }
-      {/*28)write a conditional for loading spinner. Import spinner as dependency. Go ^ */}
-      { props.isFetching && ( <Loader
-         type="Puff"
-         color="#00BFFF"
-         height={100}
-         width={100}
-      /> ) }
-      {/*41) */}
-      { props.image && <img src = { props.image } alt = 'Where did the fox go?'/> }
+      <div className = 'foxBox'>
+        { !props.image && !props.isFetching && <p>Foxes push the Button!</p> }
+        {/*28)write a conditional for loading spinner. Import spinner as dependency. Go ^ */}
+        { props.isFetching && ( <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        /> ) }
+        {/*41)write conditional for displaying image. Go to App.css */}
+        { props.image.image && <FoxImage src = { props.image.image } alt = 'Where did the fox go?' className = 'fox'/> }
+        { props.image && props.image.link }
+      </div>
       {/*31)write your onClick. Go ^ */}
-      <button onClick = { props.getFox }>Get A Fox!</button>
+      <button className = 'foxButton' onClick = { props.getFox }>Get A Fox!</button>
     </div>
   )
 }

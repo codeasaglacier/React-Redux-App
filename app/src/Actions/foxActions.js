@@ -9,10 +9,10 @@ export const FETCH_FOX_SUCCESS = 'FETCH_FOX_SUCCESS'
 export const FETCH_FOR_FAILURE = 'FETCH_FOR_FAILURE'
 
 
-//18)create async function for your action in which you return a function with dispatch as your argument
-//23)convert to ES6. Arrow functions that immediately return something can be implicitly returned w/o {}
+//18)create async function for your action in which you return a function with dispatch as your argument. Go \/
+//23)convert to ES6. Arrow functions that immediately return something can be implicitly returned w/o {}. Go ^
 export const getFox = () => ( dispatch ) => {
-    //19) dispatch an object with a type
+    //19) dispatch an object with a type. Go \/
     //Redux Thunk blocks functions from going to the reducer, dispatches the function as an object that goes back to Thunk, which then passes the object to the reducer
     //20)install redux-thunk as dependency. Go to base Index
     dispatch( { type: FETCH_FOX_START } )
@@ -21,7 +21,8 @@ export const getFox = () => ( dispatch ) => {
     axios
       .get( 'https://cors-anywhere.herokuapp.com/https://randomfox.ca/floof/' )
       .then( res => {
-        dispatch( { type: FETCH_FOX_SUCCESS, payload: res.data.value } )
+        console.log( "Res.data: ", res.data )
+        dispatch( { type: FETCH_FOX_SUCCESS, payload: res.data } )
       } )
       //36) dispatch failure type and payload. Go ^
       .catch( err => {

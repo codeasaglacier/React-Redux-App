@@ -1,4 +1,4 @@
-//26)import start type action
+//26)import start type action. Go \/
 //38)import success and failure type actions. Go \/
 import { 
   FETCH_FOX_START,
@@ -6,9 +6,9 @@ import {
   FETCH_FOR_FAILURE
 } from '../Actions'
 
-//6)create you initial state with the properties you'll need
+//6)create you initial state with the properties you'll need. Go \/
 const initialState = {
-  image: null,
+  image: {},
   isFetching: false,
   error: ''
 }
