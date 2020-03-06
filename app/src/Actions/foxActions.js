@@ -28,8 +28,8 @@ export const getFox = () => ( dispatch ) => {
       .catch( err => {
         dispatch( { type: FETCH_FOR_FAILURE, payload: err.response } )
       })
-  }
-
+}
+//note to push
 
 //leftovers from 23)\/\/\/
 //const getFox = () => {

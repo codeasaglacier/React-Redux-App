@@ -33,7 +33,7 @@ const Fox = props => {
         /> ) }
         {/*41)write conditional for displaying image. Go to App.css */}
         { props.image.image && <FoxImage src = { props.image.image } alt = 'Where did the fox go?' className = 'fox'/> }
-        { props.image && props.image.link }
+        { props.image.image && <a target = '_blank' rel='noopener noreferrer' href = { props.image.link }>Get this Fox</a> }
       </div>
       {/*31)write your onClick. Go ^ */}
       <button className = 'foxButton' onClick = { props.getFox }>Get A Fox!</button>
